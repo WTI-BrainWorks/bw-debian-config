@@ -1,4 +1,33 @@
-# debian-live-config
+Debian config for BrainWorks machine resources.
+
+Assumes use of xfce, pulseaudio, lightdm, firefox-esr, vscode...
+
+Things to handle (essentially all the configs & helpers in autoinstall project):
+ - backgrounds (& script to customize for given hostname)
+ - go_fast, go_slow, other root management things in /usr/sbin/
+ - PTB config files
+ - gamemode.ini
+ - xfce kioskrc
+ - lightdm gtk greeter settings
+ - conf file to run go_fast/slow in /etc/lightdm/lightdm.conf.d/
+ - Helper to set color profile for a given display
+ - Helper to mount/unmount S@Y drive (but check if we can get it done natively first)
+ - Helper to set the xorg.conf such that we can be robust against DisplayPort remapping?
+ - Disable module-suspend-on-idle in /etc/pulse/default.pa, or set to large timeout value.
+   According to the docs https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Modules/#module-suspend-on-idle, only good for power savings
+ - script to set background of secondary xscreen
+ - Firefox-esr settings
+ - vscode settings
+ - Mallory-Light font
+
+links:
+ - https://wiki.debian.org/ConfigPackages
+ - https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2051342
+ - https://ubuntu.com/blog/industrial-embedded-systems-ii
+ 
+
+
+# (original readme) debian-live-config
 
 ![](https://gitlab.com/nodiscc/debian-live-config/badges/master/pipeline.svg)
 

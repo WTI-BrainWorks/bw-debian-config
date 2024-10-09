@@ -9,6 +9,8 @@
 # Disable root login
 PermitRootLogin no
 
+AllowUsers bwadmin
+
 # Define which port sshd should listen to.
 Port 22
 

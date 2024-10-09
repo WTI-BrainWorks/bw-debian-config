@@ -150,11 +150,6 @@ testdisk
 #Alt: forensics-samples-all
 #Alt: forensics-full
 
-#Section: File cleaners/linters
-#Description: bleachbit
-bleachbit
-localepurge
-
 #Section: Log viewers
 #Description: gnome-system-log
 #Screenshot: gnome-system-log

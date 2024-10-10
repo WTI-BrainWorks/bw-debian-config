@@ -5,21 +5,8 @@
 #Description: synaptic
 apt-listchanges
 apt-transport-https
-aptitude
-debconf-utils
 debian-archive-keyring
 debian-keyring
-debsecan
-debsums
-gnome-packagekit
-gnome-package-updater
-packagekit
-packagekit-tools
-software-properties-gtk
-synaptic
-unattended-upgrades
-vrms
-gdebi
 command-not-found
 #Alt: gnome-package-updater
 #Alt: debfoster
@@ -80,76 +67,6 @@ memtest86+
 #Alt: btop
 #screentest # buster only
 
-#Section: Backup
-#Screenshot: deja-dup
-#Description: deja-dup
-deja-dup
-#Alt: backintime-qt
-#Alt: tmfs
-#Alt: duplicity
-#Alt: rdiff-backup
-#Alt: grsync
-#Alt: unison
-#Alt: unison-gtk
-#Alt: rsync
-#Alt: rsbackup
-#Alt: fsarchiver
-#Alt: backupninja
-#Alt: duply
-#Alt: vorta
-#Alt: rsnapshot
-#Alt: borgbackup2
-
-#Section: Disk management
-#Description: gnome-disk-utility
-#Description: gparted
-#Description: baobab
-gnome-disk-utility
-gparted
-baobab
-ncdu
-dfc
-smartmontools
-mtools
-gdisk
-parted
-hdparm
-sdparm
-dosfstools
-hfsprogs
-ntfs-3g
-kpartx
-xorriso
-lvm2
-#Alt: gsmartcontrol
-#Alt: fsarchiver
-#Alt: partclone
-#Alt: pmount
-#Alt: bilibop-udev
-#Alt: ecryptfs-utils
-#Alt: partimage
-#Alt: steghide
-#Alt: gdmap
-#Alt: clonezilla
-#Alt: exfatprogs
-#Alt: disk-filltest
-#Alt: loggedfs
-#Alt: squashfuse
-#crazydiskinfo # sid only
-
-#Section: Data recovery
-#Description: testdisk
-testdisk
-#Alt: foremost
-#Alt: scalpel
-#Alt: gddrescue
-#Alt: ddrescueview
-#Alt: extundelete
-#Alt: fatcat
-#Alt: safecopy
-#Alt: forensics-samples-all
-#Alt: forensics-full
-
 #Section: Log viewers
 #Description: gnome-system-log
 #Screenshot: gnome-system-log
@@ -165,65 +82,16 @@ colortail
 #Alt: logswan
 #tailspin # sid only
 
-#Section: Virtualization
-#Description: virt-manager
-virt-manager
-virtinst
-virt-viewer
-ebtables
-dnsmasq-base
-libvirt-daemon-system
-gir1.2-spiceclientgtk-3.0
-qemu-system-x86
-qemu-system-arm
-qemu-utils
-libguestfs-tools
-virt-p2v
-libguestfs-rsync
-libguestfs-rescue
-netcat-openbsd
-#Alt: virt-p2v
-#Alt: virt-what
-#Alt: libguestfs-tools
-#Alt: lxc
-#Alt: gnome-boxes
-#Alt: lxc-templates
-#Alt: docker.io
-#Alt: docker-registry
-#Alt: docker-doc
-#Alt: vagrant
-#Alt: schroot
-#Alt: imvirt
-#Alt: guestfish
-#Alt: guestmount
-#Alt: virtnbdbackup
-#Alt: open-infrastructure-compute-tools
-#Alt: debvm
-#virt-top # sid only
-#anbox # bullseye only
-#virtiofsd # sid only
-#quickemu # sid only
-
 #Section: Configuration management
-#Alt: ansible
-
-#Section: Java
-default-jre
+ansible
 
 #Section: Display manager/screen locker
 #Description: lightdm
 lightdm
 lightdm-gtk-greeter
 light-locker
-#Alt: accountsservice
-#Alt: slim
-#Alt: gdm3
-#Alt: arctica-greeter
-#Alt: xsecurelock
 #Alt: xscreensaver
-#Alt: xscreensaver-data-extra
-#Alt: xscreensaver-gl
-#Alt: xscreensaver-gl-extra
+
 
 #Section: Boot screen
 plymouth
@@ -233,22 +101,12 @@ plymouth-themes
 #Section: Scheduling
 at
 
-#Section: Desktop performance
-#Alt: haveged
-#Alt: rng-tools5
-#Alt: oomd
-#Alt: irqbalance
-#Alt: preload
-
 #Section: Security & sandboxing
 apparmor
 apparmor-profiles
 apparmor-utils
 libpam-tmpdir
 sudo
-#Alt: apparmor-notify
-#Alt: apparmor-profiles-extra
-#Alt: doas
 
 #Section: Time
 chrony
@@ -280,9 +138,6 @@ xserver-xorg-video-all
 xserver-xorg-video-intel
 xfonts-base
 hwdata
-#Alt: nvidia-driver
-#Alt: nvidia-vaapi-driver
-#corctrl # sid only
 
 #Section: Kernel/boot/init
 #if ARCHITECTURES amd64
@@ -317,15 +172,6 @@ intel-microcode
 #Alt: firmware-misc-nonfree
 #Alt: firmware-amd-graphics
 #Alt: firmware-intel-sound
-
-#Section: Hardware-specific packages
-#Alt: driverctl
-#Alt: pommed
-#Alt: lomoco
-#Alt: wmgui
-#Alt: mbpfan
-#Alt: usbmuxd
-#Alt: fprintd
 
 #Section: Live system components
 live-boot

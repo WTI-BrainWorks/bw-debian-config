@@ -14,7 +14,7 @@ download_extra:
 
 .PHONY: install_buildenv # install packages required to build the image
 install_buildenv:
-	sudo apt -y install live-build make build-essential wget git unzip colordiff apt-transport-https rename ovmf rsync python3-venv gnupg
+	sudo apt -y install live-build make build-essential wget git unzip colordiff apt-transport-https rename ovmf rsync python3-venv gnupg lsb-release
 
 ##############################
 

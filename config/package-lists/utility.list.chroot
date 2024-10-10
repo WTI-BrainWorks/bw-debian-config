@@ -54,24 +54,8 @@ xfce4-notifyd
 xfce4-whiskermenu-plugin
 gmrun
 xfce4-panel
-xfce4-places-plugin
-xfce4-weather-plugin
 xfce4-netload-plugin
 xfce4-pulseaudio-plugin
-#Alt: plank
-#Alt: kupfer
-#Alt: gnome-pie
-#Alt: xfce4-appfinder
-#Alt: synapse
-#Alt: zeitgeist
-#Alt: zeitgeist-datahub
-#Alt: compiz
-#Alt: compiz-plugins
-#Alt: compiz-plugins-default
-#Alt: compiz-plugins-extra
-#Alt: compiz-plugins-main
-#Alt: compton
-#Alt: compton-conf
 
 #Section: Archive management
 #Description: file-roller
@@ -100,141 +84,23 @@ gzrt
 #Alt: p7zip-rar
 #Alt: gztool
 
-
-#Section: Password management/file/disk encryption
-#Description: keepassxc
-keepassxc
-seahorse
-seahorse-daemon
-gnome-keyring
-ssh-askpass-gnome
-libpam-gnome-keyring
-gnupg
-gnupg2
-pwgen
-cryptsetup
-cryptsetup-initramfs
-libblockdev-crypto2
-#Alt: keepassx
-#Alt: keepass2
-#Alt: qtpass
-#Alt: revelation
-#Alt: apg
-#Alt: tcplay
-#Alt: xkcdpass
-#Alt: pass
-#Alt: nss-passwords
-#Alt: tomb
-#Alt: zulucrypt-gui
-#Alt: zulumount-gui
-#Alt: libzulucrypt-plugins
-#Alt: gtkcrypto
-#Alt: luckyluks
-#Alt: passes-gtk
-
 #Section: Text editors
 #Description: mousepad
 #Description: nano
 mousepad
 nano
-vim-tiny
-#Alt: gnome-builder flatpak-builder python3-lxml python3-jedi
-#Alt: vim
-#Alt: vim-doc
-#Alt: vim-scripts
-#Alt: vim-addon-manager
-#Alt: focuswriter
-#Alt: ghostwriter
-#Alt: apostrophe
-#Alt: gedit
-#Alt: gedit-plugins
-#Alt: gedit-source-code-browser-plugin
-#Alt: geany
-#Alt: nfoview
-
-#Section: Sticky notes
-#xfce4-notes # experimental only
-#Alt: xpad
-
-#Section: Maps
-##Description: gnome-maps
-#Alt: gnome-maps
-#Alt: marble-qt
-#alt: marble-plugins
-#Alt: geoclue-2.0
-#Alt: josm
-#Alt: navit
-#Alt: gpsd
-#Alt: routino
-#Alt: mkgmapgui
-#Alt: mkgmap
-#Alt: foxtrotgps
-#Alt: gis-tasks
-#Alt: gpsprune
+emacs
 
 #Section: Screenshots
 #Description: xfce4-screenshooter
 xfce4-screenshooter
-#Alt: scrot
-#Alt: gnome-screenshot
-#Alt: flameshot
-
-#Section: Clocks/timers
-#Description: alarm-clock-applet
-#Screenshot: alarm-clock-applet
-alarm-clock-applet
-tty-clock
-#Alt: gnome-clocks
-#Alt: dclock
-#Alt: gtimer
-#Alt: stopwatch
-#Alt: xfce4-timer-plugin
-#Alt: screenruler
-
-
-#Section: Calculators
-#Description: gnome-calculator
-#Screenshot: gnome-calculator
-gnome-calculator
-bc
-units
-#Alt: num-utils
-#Alt: speedcrunch
-#Alt: graphmonkey
-#gbase # sid only
 
 #Section: Terminal emulators
 #Description: xfce4-terminal
-xfce4-terminal
-#Alt: lxterminal
-#Alt: gnome-terminal
-#Alt: guake
-#Alt: terminator
-#Alt: rxvt-unicode
-#Alt: tilda
-
-#Section: Science
-#Alt: stellarium
-#Alt: wxmaxima
-#Alt: gramps
-#lightspeed # bullseye only
-
-#Section: Color management
-#Description: redshift-gtk
-redshift-gtk
-#Alt: workrave
-#Alt: safeeyes
-
-#Section: CD burning
-##Description: xfburn
-#Alt: xfburn
-#Alt: brasero
-#Alt: brasero-cdrkit
-#Alt: cdrdao
+terminator
 
 #Section: Desktop configuration utilities
 xfce4-settings
-gnome-system-tools
 menulibre
 dconf-editor
 dconf-cli
@@ -245,7 +111,6 @@ dconf-gsettings-backend
 #Section: Power management
 #Description: xfce4-power-manager
 xfce4-power-manager
-xfce4-battery-plugin
 radeontool
 bumblebee
 vbetool
@@ -259,56 +124,12 @@ fancontrol
 rfkill
 cpufrequtils
 pm-utils
-#Alt: powerdebug
-#Alt: tlp
-#Alt: powerstat
-#Alt: i8kutils
-#Alt: usbtop
-#Alt: primus
-#Alt: hd-idle
 
 #Section: Character map/font viewer
 gucharmap
 gnome-font-viewer
 #Alt: font-manager
 #Alt: thunar-font-manager
-
-#Section: Spell checking/dictionaries
-hunspell
-hunspell-en-us
-hunspell-fr
-aspell
-aspell-fr
-hunspell-fr
-ispell
-iamerican
-ibritish
-ifrench-gut
-wfrench
-#Alt: xfce4-dict
-#Alt: gnome-dictionary
-#Alt: goldendict
-#Alt: verbiste-gnome
-
-#Section: Resources
-desktop-base
-papirus-icon-theme
-arc-theme
-gnome-themes-extra
-sound-theme-freedesktop
-gnome-audio
-qt5-gtk-platformtheme
-#Alt: faenza-icon-theme
-#Alt: deepin-icon-theme
-#Alt: paper-icon-theme
-#Alt: mint-y-icons
-#clearlooks-phenix-theme # sid only
-
-#Section: Virtual keyboards
-#Alt: onboard
-#Alt: onboard-data
-#cellwriter # bullseye only
-#florence # sid only
 
 #Section: Other
 libnotify-bin

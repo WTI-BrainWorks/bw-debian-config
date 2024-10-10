@@ -24,9 +24,9 @@ lb config noauto \
 --firmware-binary true \
 --firmware-chroot true \
 --initramfs live-boot \
---iso-publisher debian-live-config \
---iso-volume debian-live-config-4.1.0 \
---linux-packages "linux-image-rt linux-headers" \
+--iso-publisher brainworks \
+--iso-volume debian-brainworks-1.0 \
+--linux-packages "linux-image-liquorix linux-headers-liquorix" \
 --bootappend-live "boot=live config splash" \
 --memtest memtest86+ \
 --win32-loader true

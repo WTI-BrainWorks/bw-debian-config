@@ -3,6 +3,7 @@
 #Section: Image viewers and managers
 #Description: ristretto
 ristretto
+feh
 
 #Section: Vector editors
 ##Description: inkscape

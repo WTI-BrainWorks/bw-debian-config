@@ -1,0 +1,3 @@
+server clock1.net.yale.edu iburst prefer
+server clock2.net.yale.edu iburst prefer
+server clock3.net.yale.edu iburst prefer

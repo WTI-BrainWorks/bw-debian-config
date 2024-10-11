@@ -1,0 +1,12 @@
+- [ ] Make sure all expected packages are installed (should be set, but...)
+- [x] Make sure correct kernel is running
+- [ ] Make autologout functionality work (maybe xautolock?)
+- [x] install kiosk mode config
+- [x] install lightdm greeter settings
+- [x] install skeletons for xfce4 & Thunar
+- [~] Run radeontop in the background for graphical sessions
+- [x] Add default bg image & font
+- [ ] Script to generate backgrounds on-the-fly
+- [x] Run bw_go_fast on login/quit on logout
+- [x] Set env variables
+- [ ] Move PTB config files to right locations

@@ -22,7 +22,6 @@ colordiff
 #Alt: git-secrets
 #Alt: gh
 #Alt: git-delete-merged-branches
-#ghi # bullseye only
 #git-sizer # sid only
 #github-backup # sid only
 #gitleaks # sid only

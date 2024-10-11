@@ -21,7 +21,7 @@ Things to handle (essentially all the configs & helpers in autoinstall project):
  - Mallory-Light font
 
 links:
- - https://wiki.debian.org/ConfigPackages
+ - https://wiki.debian.org/ConfigPackages.
  - https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2051342
  - https://ubuntu.com/blog/industrial-embedded-systems-ii
  

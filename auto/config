@@ -7,9 +7,9 @@ lb config noauto \
 --apt-indices false \
 --architectures amd64 \
 --archive-areas 'main contrib non-free non-free-firmware' \
---backports true \
---security true \
---updates true \
+# --backports true \
+# --security true \
+# --updates true \
 --source false \
 --binary-filesystem ext4 \
 --binary-images iso-hybrid \

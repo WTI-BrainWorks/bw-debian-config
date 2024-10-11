@@ -1,0 +1,15 @@
+[xfdesktop-version-4.10.3+-rcfile_format]
+4.10.3+=true
+
+[/home/bwadmin/desktop/conda.desktop]
+row=0
+col=2
+
+[/]
+row=0
+col=0
+
+[/home/bwadmin]
+row=0
+col=1
+

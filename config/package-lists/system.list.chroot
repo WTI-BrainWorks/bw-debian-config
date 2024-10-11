@@ -1,5 +1,23 @@
 #Title: System
 
+#Section: BW
+#Description: BW things
+bc
+fonts-freefont-otf
+xserver-xorg-video-amdgpu
+radeontop
+chrony
+mesa-utils
+meson
+pkg-config
+libinih-dev
+cmake
+net-tools
+displaycal
+libglfw3-dev
+sysprof
+gnome-themes-extra
+
 #Section: Package management
 #Description: gnome-packagekit
 #Description: synaptic
@@ -89,7 +107,7 @@ ansible
 #Description: lightdm
 lightdm
 lightdm-gtk-greeter
-light-locker
+#Alt: light-locker
 #Alt: xscreensaver
 
 
@@ -168,10 +186,10 @@ firmware-ipw2x00
 firmware-iwlwifi
 amd64-microcode
 intel-microcode
-#Alt: firmware-linux-nonfree
-#Alt: firmware-misc-nonfree
-#Alt: firmware-amd-graphics
-#Alt: firmware-intel-sound
+firmware-linux-nonfree
+firmware-misc-nonfree
+firmware-amd-graphics
+firmware-intel-sound
 
 #Section: Live system components
 live-boot

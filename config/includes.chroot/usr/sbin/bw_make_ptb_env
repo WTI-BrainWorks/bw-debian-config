@@ -1,0 +1,85 @@
+#!/bin/python3
+
+# install a new PTB version into /opt/ptb/<ver>
+# make a MATLAB + octave shortcut
+# substitute the datapixx mex in Psychtoolbox/PsychBasic/Octave5LinuxFiles64 for the
+# one in vpixx software tools
+import os
+import shutil
+import platform
+from subprocess import run
+import argparse
+
+if __name__ == '__main__':
+    if platform.system() != 'Linux' or not os.environ.get('BRAINWORKS'):
+        raise RuntimeError('This script is only meant for Linux computers in BrainWorks. If this is the case, re-run with `sudo -E ...`')
+
+    os.makedirs('/opt/ptb/', exist_ok=True)
+    parser = argparse.ArgumentParser(description='Set up a new shared PTB verison.')
+    parser.add_argument('--tag', type=str, default='3.0.9.14',
+                        help='git branch or *entire* hash of a commit',
+                        required=True)
+    parser.add_argument('--remote', type=str, default='psychtoolbox-3',
+                        help='git remote (assumes github.com)')
+    parser.add_argument('--easy_name', type=str,
+                        help='If this is specified, use this instead of the --tag value to name things')
+    parser.add_argument('--shortcut', type=bool, default=False,
+                        help='Make a desktop shortcut?')
+    parser.add_argument('--verbose', type=bool, default=False,
+                        help='Print the gory details?')
+    args = parser.parse_args()
+    
+    if args.easy_name:
+        name = args.easy_name
+    else:
+        name = args.tag
+        
+    silent = not args.verbose
+    
+    os.makedirs('/opt/ptb/', exist_ok=True)
+    
+    base_path = f'/opt/ptb/{name}'
+    os.makedirs(base_path)
+    # in this montage, the value of 'git tag' isn't useful?
+    # But what does it matter if we have PsychtoolboxVersion + hash?
+    out = run(['git', '-C', base_path, 'init'], capture_output=silent)
+    if out.returncode != 0:
+        shutil.rmtree(base_path)
+        raise RuntimeError('Failed to git init.')
+    
+    out = run(['git', '-C', base_path, 'remote', 'add', 'origin', 
+               f'https://github.com/{args.remote}/psychtoolbox-3.git'],
+              capture_output=silent)
+    if out.returncode != 0:
+        shutil.rmtree(base_path)
+        raise RuntimeError('Failed to git remote add origin.')
+    
+    out = run(['git', '-C', base_path, 'fetch', '--depth', '1', 'origin', args.tag],
+              capture_output=silent)
+    if out.returncode != 0:
+        shutil.rmtree(base_path)
+        raise RuntimeError('Failed to git fetch.')
+
+    out = run(['git', '-C', base_path, 'checkout', 'FETCH_HEAD'],
+              capture_output=silent)
+    if out.returncode != 0:
+        shutil.rmtree(base_path)
+        raise RuntimeError('Failed to git checkout.')
+    
+    # replace the Datapixx files with the one from vpixx
+    shutil.copy(r'/usr/local/share/VPixx Software Tools/Software Tools/Matlab/mexfiles/linux/octave/Datapixx_octave5.mex',
+                os.path.join(base_path, 'Psychtoolbox', 'PsychBasic', 'Octave5LinuxFiles64', 'Eyelink.mex'))
+    shutil.copy(r'/usr/local/share/VPixx Software Tools/Software Tools/Matlab/mexfiles/linux/matlab/Datapixx.mexa64',
+                os.path.join(base_path, 'Psychtoolbox', 'PsychBasic', 'Eyelink.mexa64'))
+    
+    # make a desktop shortcut?
+    # For octave, we'll already have useptb on the search path
+    # by adding it to the /usr/share/octave/site/m/startup/octaverc file
+    # and then the command line can be executed like:
+    # `octave --eval "useptb(<version>);" --persist [--gui]
+    
+    # For matlab, we'll add useptb to the path by editing
+    # /opt/<..matlab root..>/toolbox/local/matlabrc
+    # and then executing
+    # `matlab -r "useptb(<version>);`
+    # and that's it?

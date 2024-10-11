@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=bw fast
+Comment=Start bw_go_fast in the background
+Exec=/usr/sbin/bw_go_fast
+Terminal=false
+Type=Application
+NoDisplay=true

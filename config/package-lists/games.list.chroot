@@ -12,6 +12,8 @@ libopenhmd-dev
 libusb-1.0-0-dev
 xorg-dev
 libx11-xcb-dev
+libxcb*-dev
+libgstreamer*-dev
 libglu1-mesa-dev
 freeglut3-dev
 libasound2-dev

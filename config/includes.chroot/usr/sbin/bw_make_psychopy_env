@@ -1,0 +1,149 @@
+#!/bin/python3
+
+import os
+import stat
+import shutil
+import platform
+from subprocess import run
+import argparse
+# run as root user (this file will be in /opt/scripts/)
+# future idea would be to open it up to non-root locations?
+
+# this will go in /usr/share/applications, then we'll copy it
+# to the desktop with the executable bit (chmod +x <file>)
+desktop_entry = """
+[Desktop Entry]
+Name=PsychoPy {psychopy_v}, Py {py_v} ({type})
+Comment=PsychoPy with environment pre-activated.
+GenericName=PsychoPy env
+Exec={cmd}
+Icon=/usr/share/pixmaps/python3.12.xpm
+Terminal=false
+Type=Application
+Categories=Development;Education;
+StartupNotify=true
+Keywords=psychopy;python;experiment;
+"""
+
+terminal_cmd = """
+/usr/bin/terminator --title "PsychoPy {psychopy_v}, Py {py_v}" -e "source {env_path}/bin/activate;
+echo -e 'Type \033[1;93mpsychopy\033[0m to launch the PsychoPy app.'; bash;"
+"""
+
+terminal_cmd = ''.join(terminal_cmd.splitlines())
+
+app_cmd = "{env_path}/bin/psychopy"
+
+def write_desktop_file(py_version, psychopy_version, env_path):
+    # see /usr/share/applications/* for examples
+    base_name = f'psychopy{psychopy_version}_py{py_version}.desktop'
+    file_name = f'/usr/share/applications/{base_name}'
+    desktop_name = f'/home/bw/Desktop/psychopy/{base_name}'
+    terminal_name = f'/home/bw/Desktop/psychopy/terminal/{base_name}'
+    types = {
+        'App': {'name': desktop_name, 'cmd': app_cmd},
+        'Terminal': {'name': terminal_name, 'cmd': terminal_cmd}
+    }
+    
+    os.makedirs('/home/bw/Desktop/psychopy/terminal/', exist_ok=True)
+
+    for type in types:
+        info = types[type]
+        with open(info['name'], 'w') as f:
+            f.write(desktop_entry.format(psychopy_v=psychopy_version,
+                                         py_v=py_version,
+                                         env_path=env_path,
+                                         type=type,
+                                         cmd=info['cmd'].format(
+                                             psychopy_v=psychopy_version,
+                                             py_v=py_version,
+                                             env_path=env_path
+                                         )))
+    
+    # copy from desktop
+    shutil.copyfile(desktop_name, file_name)
+    # # set the permissions
+    st = os.stat(desktop_name)
+    os.chmod(desktop_name, st.st_mode | stat.S_IEXEC)
+    os.chmod(terminal_name, st.st_mode | stat.S_IEXEC)
+    
+
+if __name__ == '__main__':
+    if platform.system() != 'Linux' or not os.environ.get('BRAINWORKS'):
+        raise RuntimeError('This script is only meant for Linux computers in BrainWorks. If this is the case, re-run with `sudo -E ...`')
+
+    os.makedirs('/opt/psychopy/', exist_ok=True)
+
+    # TODO:
+    # just use tag/hash and always install from github instead of pypi
+    # then it's easier to specify forked location/etc instead of totally different code path
+    parser = argparse.ArgumentParser(description='Set up a new PsychoPy env (+ BrainWorks hardware add-ons).')
+    parser.add_argument('--py_ver', type=str, default='3.10', 
+                        help='Python version (e.g. 3.10, 3.8, ...)',
+                        choices=['3.8', '3.10', '3.12'], # Match what we have installed through deadsnakes
+                        required=True)
+    parser.add_argument('--tag', type=str, default='2024.2.1',
+                        required=True,
+                        help='PsychoPy tagged version or hash')
+    parser.add_argument('--remote', type=str, default='psychopy',
+                        help='git remote (assumes github.com)')
+    parser.add_argument('--easy_name', type=str,
+                        help='If this is specified, use this instead of the --tag value to name things')
+    parser.add_argument('--shortcut', type=bool, default=False,
+                        help='Make a desktop shortcut?')
+    
+    args = parser.parse_args()
+    
+    if args.easy_name:
+        name = args.easy_name
+    else:
+        name = args.tag
+    
+    py_ver = f'python{args.py_ver}'
+    env_dir = f'/opt/psychopy/psychopy{name}_py{args.py_ver}'
+    venv_py = os.path.join(env_dir, 'bin', 'python')
+    
+    if os.path.isdir(env_dir):
+        raise RuntimeError('Environment already exists!')
+    
+    # make the environment
+    out = run([py_ver, '-m', 'venv', env_dir])
+    out.check_returncode()
+    
+    # install the requested psychopy version + HW packages from elsewhere on the system
+    out = run([venv_py, '-m', 'pip', 'install', '--upgrade', 'pip'])
+    if out.returncode != 0:
+        shutil.rmtree(env_dir)
+        raise RuntimeError('Updating pip failed, removing virtual env...')
+    
+    out = run([venv_py, '-m', 'pip', 'install', '--find-links',
+               r'/usr/local/share/VPixx Software Tools/Software Tools/pypixxlib/',
+               'pypixxlib'])
+    if out.returncode != 0:
+        shutil.rmtree(env_dir)
+        raise RuntimeError('Installing pypixxlib failed, removing virtual env...')
+
+    # we *could* get the pypi or sr-pypi one, but we already have this...
+    out = run([venv_py, '-m', 'pip', 'install', '--no-index',
+               '--find-links', '/usr/share/EyeLink/SampleExperiments/Python/wheels/',
+               'sr_research_pylink'])
+    if out.returncode != 0:
+        shutil.rmtree(env_dir)
+        raise RuntimeError('Installing pylink failed, removing virtual env...')
+    
+    # install directly from github so we can get a different remote if necessary, and/or specific commits/tags
+    # e.g. see https://github.com/psychopy/psychopy/issues/6812 for updates
+    out = run([venv_py, '-m', 'pip', 'install', f'git+https://github.com/{args.remote}/psychopy@{name}'])
+    if out.returncode != 0:
+        shutil.rmtree(env_dir)
+        raise RuntimeError('Installing psychopy failed, removing virtual env...')
+    
+    # other pkgs not in exotic locations
+    out = run([venv_py, '-m', 'pip', 'install', 'psychopy-glfw', 'pylsl', 'line_profiler', 'pygamemode'])
+    if out.returncode != 0:
+        shutil.rmtree(env_dir)
+        raise RuntimeError('Installing other pip pkgs failed, removing virtual env...')
+    
+    # make a desktop shortcut?
+    if args.shortcut:
+        write_desktop_file(args.py_ver, name, env_dir)

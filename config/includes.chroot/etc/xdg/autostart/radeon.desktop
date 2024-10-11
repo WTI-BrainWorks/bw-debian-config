@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=radeontop
+Comment=Start radeontop in the background
+Exec=radeontop -d /dev/null
+Terminal=false
+Type=Application
+NoDisplay=true

@@ -4,9 +4,12 @@
 - [x] install kiosk mode config
 - [x] install lightdm greeter settings
 - [x] install skeletons for xfce4 & Thunar
-- [~] Run radeontop in the background for graphical sessions
+- [~] Run radeontop in the background for graphical sessions (need to move to systemd)
 - [x] Add default bg image & font
 - [ ] Script to generate backgrounds on-the-fly
-- [x] Run bw_go_fast on login/quit on logout
+- [~] Run bw_go_fast on login/quit on logout (need to move to systemd)
 - [x] Set env variables
 - [ ] Move PTB config files to right locations
+- [~] Symlink libglut in the live image (need to check)
+- [ ] Install default PTB and PsychoPy
+- [ ] Install a py3.10 somehow (use ~conda~ (libstdc++ differences, etc. make it a bad experience)? use pyenv? build from source?)

@@ -1,5 +1,0 @@
-deb https://snapshot.debian.org/archive/debian/20241008/ bookworm main contrib non-free non-free-firmware
-deb https://snapshot.debian.org/archive/debian-security/20241008/ bookworm-security main contrib non-free non-free-firmware
-deb https://snapshot.debian.org/archive/debian/20241008/ bookworm-proposed-updates main contrib non-free non-free-firmware
-deb https://snapshot.debian.org/archive/debian/20241008/ bookworm-updates main contrib non-free non-free-firmware
-deb https://snapshot.debian.org/archive/debian/20241008/ bookworm-backports main contrib non-free non-free-firmware

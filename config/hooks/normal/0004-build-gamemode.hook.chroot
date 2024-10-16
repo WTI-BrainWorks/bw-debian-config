@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /tmp/
+git clone --depth=1 --single-branch --branch=1.8.2 https://github.com/feralinteractive/gamemode /tmp/gamemode
+cd gamemode
+meson setup builddir --prefix=/usr --buildtype release -Dwith-systemd-user-unit-dir=/etc/systemd/user
+ninja -C builddir
+ninja install -C builddir
+rm -rf /tmp/gamemode
+

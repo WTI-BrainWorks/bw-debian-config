@@ -1,0 +1,14 @@
+#!/bin/bash
+
+apt-get build-dep -y pulseaudio
+# https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/Developer/PulseAudioFromGit/
+# https://www.linuxfromscratch.org/blfs/view/git/multimedia/pulseaudio.html
+cd /tmp/
+wget https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-17.0.tar.xz
+tar --xz -xf pulseaudio-17.0.tar.xz
+cd pulseaudio-17.0
+meson --prefix=/usr --buildtype=release -D doxygen=false -D bluez5=disabled build
+ninja -C build
+ninja -C build install
+ldconfig
+rm /tmp/pulseaudio-17.0.tar.xz

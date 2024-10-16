@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cd /tmp/
+wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tar.xz
+tar --xz -xf Python-3.10.15.tar.xz
+cd Python-3.10.15
+
+./configure --prefix=/opt/python/3.10.15/ \
+  --enable-optimizations \
+  --with-lto \
+  --with-computed-gotos \
+  --with-system-ffi
+
+make -j "$(nproc)"
+make altinstall
+#rm /tmp/Python-3.10.15.tar.xz
+

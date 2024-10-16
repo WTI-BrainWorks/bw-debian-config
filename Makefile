@@ -20,13 +20,13 @@ install_buildenv:
 
 .PHONY: clean # clear all caches, only required when changing the mirrors/architecture config
 clean:
-	sudo lb clean --all
+	sudo lb clean --all --cache
 	make -f Makefile.extra clean
 	rm -rf .venv
 
 build:
 	# Build the live system/ISO image
-	sudo lb clean --all
+	sudo lb clean --all --cache
 	sudo lb config
 	sudo lb build
 

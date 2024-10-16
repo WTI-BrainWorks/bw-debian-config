@@ -1,1 +1,7 @@
 addpath('/opt/bw/');
+% preload packages with functionality that people might expect from MATLAB
+pkg load io;
+pkg load image;
+pkg load statistics;
+pkg load signal;
+pkg load optim;

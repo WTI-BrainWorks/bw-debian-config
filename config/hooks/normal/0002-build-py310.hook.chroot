@@ -13,5 +13,4 @@ cd Python-3.10.15
 
 make -j "$(nproc)"
 make altinstall
-#rm /tmp/Python-3.10.15.tar.xz
-
+rm /tmp/Python-3.10.15.tar.xz

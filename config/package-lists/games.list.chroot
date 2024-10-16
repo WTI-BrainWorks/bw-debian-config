@@ -7,6 +7,7 @@ octave-image
 octave-optim
 octave-statistics
 octave-signal
+octave-io
 libfontconfig1-dev
 libopenhmd-dev
 libusb-1.0-0-dev

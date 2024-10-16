@@ -7,7 +7,7 @@ cd /tmp/
 wget https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-17.0.tar.xz
 tar --xz -xf pulseaudio-17.0.tar.xz
 cd pulseaudio-17.0
-meson --buildtype=release -D doxygen=false -D bluez5=disabled build
+meson setup --buildtype=release -D doxygen=false -D bluez5=disabled build
 ninja -C build
 ninja -C build install
 ldconfig

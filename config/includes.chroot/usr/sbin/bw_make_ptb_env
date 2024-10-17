@@ -10,6 +10,54 @@ import platform
 from subprocess import run
 import argparse
 
+desktop_entry = """
+[Desktop Entry]
+Name=PTB {ptb_ver} + Octave
+Comment=Octave {otype} with PTB added to the path.
+GenericName=PTB & Octave env
+Exec={cmd}
+Icon=/usr/share/pixmaps/terminator.png
+Terminal=false
+Type=Application
+Categories=Development;Education;
+StartupNotify=true
+Keywords=ptb;psychtoolbox;octave;matlab;experiment;
+"""
+
+terminal_cmd = """
+/usr/bin/terminator --title "PTB {ptb_ver} + Octave" -e "BW_PTB_VERSION={ptb_ver} bash;"
+"""
+
+terminal_cmd = ''.join(terminal_cmd.splitlines())
+
+app_cmd = "BW_PTB_VERSION={ptb_ver} octave --gui"
+
+def write_desktop_file(ptb_version):
+    base_name = f'ptb_{ptb_version}.desktop'
+    file_name = f'/usr/share/applications/{base_name}'
+    desktop_name = f'/home/bw/Desktop/ptb/{base_name}'
+    terminal_name = f'/home/bw/Desktop/ptb/terminal/{base_name}'
+
+    os.makedirs('/home/bw/Desktop/ptb/terminal/', exist_ok=True)
+
+    types = {
+        'GUI': {'name': desktop_name, 'cmd': app_cmd.format(ptb_ver=ptb_version)},
+        'terminal': {'name': terminal_name, 'cmd', terminal_cmd.format(ptb_ver.ptb_version)}
+    }
+    for t in types:
+        info = types[t]
+        with open(info['name'], 'w') as f:
+            f.write(desktop_entry.format(ptb_ver=ptb_version,
+                                         otype=t,
+                                         cmd=info['cmd']))
+        
+    shutil.copyfile(desktop_name, file_name)
+    shutil.copyfile(terminal_name, file_name)
+    st = os.stat(desktop_name)
+    os.chmod(desktop_name, st.st_mode | stat.S_IEXEC)
+    os.chmod(terminal_name, st.st_mode | stat.S_IEXEC)
+    
+
 if __name__ == '__main__':
     if platform.system() != 'Linux' or not os.environ.get('BRAINWORKS'):
         raise RuntimeError('This script is only meant for Linux computers in BrainWorks. If this is the case, re-run with `sudo -E ...`')
@@ -66,6 +114,7 @@ if __name__ == '__main__':
         shutil.rmtree(base_path)
         raise RuntimeError('Failed to git checkout.')
     
+    out = run(['git', 'config', '--system', '--add', 'safe.directory', base_path])
     # replace the Datapixx files with the one from vpixx
     shutil.copy(r'/usr/local/share/VPixx Software Tools/Software Tools/Matlab/mexfiles/linux/octave/Datapixx_octave5.mex',
                 os.path.join(base_path, 'Psychtoolbox', 'PsychBasic', 'Octave5LinuxFiles64', 'Eyelink.mex'))

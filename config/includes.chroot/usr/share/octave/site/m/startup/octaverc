@@ -1,7 +1,15 @@
 addpath('/opt/bw/');
 % preload packages with functionality that people might expect from MATLAB
+warning('off', 'Octave:shadowed-function');
 pkg load io;
 pkg load image;
 pkg load statistics;
 pkg load signal;
 pkg load optim;
+warning('on', 'Octave:shadowed-function');
+
+ver = getenv('BW_PTB_VERSION');
+if ver
+    useptb(ver);
+end
+clear ver;

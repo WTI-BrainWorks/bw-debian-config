@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# silence 'detected dubious ownership' things related to root-owned
+# git repositories
+# git config --system --add safe.directory '*'
+
+# # try to keep people from caching credentials
+# git config --system --unset credential.helper

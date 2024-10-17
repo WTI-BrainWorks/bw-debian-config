@@ -23,6 +23,7 @@ lb config noauto \
 --distribution bookworm \
 --firmware-binary true \
 --firmware-chroot true \
+--image-name bw-image \
 --initramfs live-boot \
 --iso-publisher brainworks \
 --iso-volume debian-brainworks-1.0 \

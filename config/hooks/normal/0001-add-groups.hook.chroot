@@ -1,0 +1,6 @@
+#!/bin/bash
+
+groupadd psychtoolbox
+groupadd gamemode
+#usermod -aG psychtoolbox bwadmin
+#usermod -aG gamemode bwadmin

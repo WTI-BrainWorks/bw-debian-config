@@ -7,4 +7,3 @@ meson setup builddir --prefix=/usr --buildtype release -Dwith-systemd-user-unit-
 ninja -C builddir
 ninja install -C builddir
 rm -rf /tmp/gamemode
-

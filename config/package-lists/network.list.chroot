@@ -21,7 +21,6 @@ samba
 #Description: network-manager-gnome
 network-manager-gnome
 network-manager-openvpn-gnome
-wireguard
 dnsmasq-base
 hostname
 bridge-utils

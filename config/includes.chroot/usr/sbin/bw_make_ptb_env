@@ -5,6 +5,7 @@
 # substitute the datapixx mex in Psychtoolbox/PsychBasic/Octave5LinuxFiles64 for the
 # one in vpixx software tools
 import os
+import stat
 import shutil
 import platform
 from subprocess import run
@@ -20,7 +21,7 @@ Icon=/usr/share/pixmaps/terminator.png
 Terminal=false
 Type=Application
 Categories=Development;Education;
-StartupNotify=true
+StartupNotify=false
 Keywords=ptb;psychtoolbox;octave;matlab;experiment;
 """
 
@@ -30,7 +31,7 @@ terminal_cmd = """
 
 terminal_cmd = ''.join(terminal_cmd.splitlines())
 
-app_cmd = "BW_PTB_VERSION={ptb_ver} octave --gui"
+app_cmd = "env BW_PTB_VERSION={ptb_ver} octave --gui"
 
 def write_desktop_file(ptb_version):
     base_name = f'ptb_{ptb_version}.desktop'
@@ -42,7 +43,7 @@ def write_desktop_file(ptb_version):
 
     types = {
         'GUI': {'name': desktop_name, 'cmd': app_cmd.format(ptb_ver=ptb_version)},
-        'terminal': {'name': terminal_name, 'cmd', terminal_cmd.format(ptb_ver.ptb_version)}
+        'terminal': {'name': terminal_name, 'cmd': terminal_cmd.format(ptb_ver=ptb_version)}
     }
     for t in types:
         info = types[t]
@@ -56,6 +57,7 @@ def write_desktop_file(ptb_version):
     st = os.stat(desktop_name)
     os.chmod(desktop_name, st.st_mode | stat.S_IEXEC)
     os.chmod(terminal_name, st.st_mode | stat.S_IEXEC)
+    #f=FILE; gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')"
     
 
 if __name__ == '__main__':

@@ -57,11 +57,7 @@ download_extra: clean
 	echo 'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/sr.key.chroot.asc] https://apt.sr-research.com SRResearch main' > config/archives/sr.list.chroot
 	cp config/archives/sr.list.chroot config/archives/sr.list.binary
 
-	# DISABLED https://signal.org/
-	# RFP https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=842943
-    # requires trusting a third-party repository, adds ~400MB to installation size
-	# echo 'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/signal-desktop.key.chroot.asc] https://updates.signal.org/desktop/apt xenial main' > config/archives/signal-desktop.list.chroot
-	# cp config/archives/signal-desktop.list.chroot config/archives/signal-desktop.list.binary
-	# wget -O config/archives/signal-desktop.key.chroot https://updates.signal.org/desktop/apt/keys.asc
-	# cp config/archives/signal-desktop.key.chroot config/archives/signal-desktop.key.binary
-	# echo "signal-desktop" > config/package-lists/signal-desktop.list.chroot
+	# get usb capture utility
+	wget -O cache/downloads/usbcaptureutility_3.0.4.30002Internal.deb \
+	https://yaleedu-my.sharepoint.com/:u:/g/personal/roeland_hancock_yale_edu/EcTL0k8d6mpJpEICpcEYFnMBdU1_BcYBwMXU66nJ1EXnLg?download=1
+	cp cache/downloads/usbcaptureutility_3.0.4.30002Internal.deb config/packages.chroot/

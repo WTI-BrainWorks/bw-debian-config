@@ -94,7 +94,7 @@ if __name__ == '__main__':
         name = args.tag
     
     py_ver = f'/opt/python/3.10.15/bin/python3.10'
-    env_dir = f'/opt/psychopy/psychopy{name}_py3.10'
+    env_dir = f'/opt/psychopy/{name}_py3.10'
     venv_py = os.path.join(env_dir, 'bin', 'python')
     
     if os.path.isdir(env_dir):

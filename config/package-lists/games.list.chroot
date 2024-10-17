@@ -43,6 +43,7 @@ libxcb-cursor0
 #Section: other
 code
 conda
+usbcaptureutility
 
 #Section: Games
 ##Description: lutris

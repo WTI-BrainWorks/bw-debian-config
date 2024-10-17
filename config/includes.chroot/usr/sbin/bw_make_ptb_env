@@ -122,6 +122,8 @@ if __name__ == '__main__':
                 os.path.join(base_path, 'Psychtoolbox', 'PsychBasic', 'Eyelink.mexa64'))
     
     # make a desktop shortcut?
+    if args.shortcut:
+        write_desktop_file(name)
     # For octave, we'll already have useptb on the search path
     # by adding it to the /usr/share/octave/site/m/startup/octaverc file
     # and then the command line can be executed like:

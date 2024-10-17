@@ -58,6 +58,6 @@ download_extra: clean
 	cp config/archives/sr.list.chroot config/archives/sr.list.binary
 
 	# get usb capture utility
-	wget -O cache/downloads/usbcaptureutility_3.0.4.30002Internal.deb \
+	wget -O cache/downloads/usbcaptureutility_3.0.4.30002Internal_amd64.deb \
 	https://yaleedu-my.sharepoint.com/:u:/g/personal/roeland_hancock_yale_edu/EcTL0k8d6mpJpEICpcEYFnMBdU1_BcYBwMXU66nJ1EXnLg?download=1
-	cp cache/downloads/usbcaptureutility_3.0.4.30002Internal.deb config/packages.chroot/
+	cp cache/downloads/usbcaptureutility_3.0.4.30002Internal_amd64.deb config/packages.chroot/

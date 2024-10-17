@@ -20,8 +20,6 @@ samba
 #Section: Network management
 #Description: network-manager-gnome
 network-manager-gnome
-network-manager-openvpn-gnome
-dnsmasq-base
 hostname
 bridge-utils
 ethtool

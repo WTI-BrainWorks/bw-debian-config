@@ -17,7 +17,7 @@ Name=PsychoPy {psychopy_v}, Py 3.10 ({type})
 Comment=PsychoPy with environment pre-activated.
 GenericName=PsychoPy env
 Exec={cmd}
-Icon=/usr/share/pixmaps/python3.xpm
+Icon=/usr/share/pixmaps/{icon}
 Terminal=false
 Type=Application
 Categories=Development;Education;
@@ -36,13 +36,18 @@ app_cmd = "{env_path}/bin/psychopy"
 
 def write_desktop_file(psychopy_version, env_path):
     # see /usr/share/applications/* for examples
-    base_name = f'psychopy{psychopy_version}_py3.10.desktop'
-    file_name = f'/usr/share/applications/{base_name}'
-    desktop_name = f'/home/bw/Desktop/psychopy/{base_name}'
-    terminal_name = f'/home/bw/Desktop/psychopy/terminal/{base_name}'
+    base_name = f'psychopy{psychopy_version}_py3.10'
+    gui_share_name = f'/usr/share/applications/{base_name}_gui.desktop'
+    gui_name = f'/home/bw/Desktop/psychopy/{base_name}_gui.desktop'
+    terminal_share_name = f'/usr/share/applications/{base_name}.desktop'
+    terminal_name = f'/home/bw/Desktop/psychopy/terminal/{base_name}.desktop'
     types = {
-        'App': {'name': desktop_name, 'cmd': app_cmd},
-        'Terminal': {'name': terminal_name, 'cmd': terminal_cmd}
+        'App': {'name': gui_share_name,
+                'cmd': app_cmd,
+                'icon': 'psychopy.png'},
+        'Terminal': {'name': terminal_share_name,
+                     'cmd': terminal_cmd,
+                     'icon': 'terminator.png'}
     }
     
     os.makedirs('/home/bw/Desktop/psychopy/terminal/', exist_ok=True)
@@ -58,8 +63,8 @@ def write_desktop_file(psychopy_version, env_path):
                                              env_path=env_path
                                          )))
     
-    # copy from desktop
-    shutil.copyfile(desktop_name, file_name)
+    os.symlink(gui_share_name, gui_name)
+    os.symlink(terminal_share_name, terminal_name)
     # # set the permissions
     st = os.stat(desktop_name)
     os.chmod(desktop_name, st.st_mode | stat.S_IEXEC)

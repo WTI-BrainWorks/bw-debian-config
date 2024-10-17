@@ -17,7 +17,7 @@ Name=PTB {ptb_ver} + Octave
 Comment=Octave {otype} with PTB added to the path.
 GenericName=PTB & Octave env
 Exec={cmd}
-Icon=/usr/share/pixmaps/terminator.png
+Icon=/usr/share/pixmaps/{icon}
 Terminal=false
 Type=Application
 Categories=Development;Education;
@@ -34,26 +34,32 @@ terminal_cmd = ''.join(terminal_cmd.splitlines())
 app_cmd = "env BW_PTB_VERSION={ptb_ver} octave --gui"
 
 def write_desktop_file(ptb_version):
-    base_name = f'ptb_{ptb_version}.desktop'
-    file_name = f'/usr/share/applications/{base_name}'
-    desktop_name = f'/home/bw/Desktop/ptb/{base_name}'
-    terminal_name = f'/home/bw/Desktop/ptb/terminal/{base_name}'
+    base_name = f'ptb_{ptb_version}'
+    gui_share_name = f'/usr/share/applications/{base_name}_gui.desktop'
+    gui_name = f'/home/bw/Desktop/ptb/{base_name}_gui.desktop'
+    terminal_share_name = f'/usr/share/applications/{base_name}.desktop'
+    terminal_name = f'/home/bw/Desktop/ptb/terminal/{base_name}.desktop'
 
     os.makedirs('/home/bw/Desktop/ptb/terminal/', exist_ok=True)
 
     types = {
-        'GUI': {'name': desktop_name, 'cmd': app_cmd.format(ptb_ver=ptb_version)},
-        'terminal': {'name': terminal_name, 'cmd': terminal_cmd.format(ptb_ver=ptb_version)}
+        'GUI': {'name': gui_share_name, 
+                'cmd': app_cmd.format(ptb_ver=ptb_version)
+                'icon': 'ptb.jpg'},
+        'terminal': {'name': terminal_share_name, 
+                     'cmd': terminal_cmd.format(ptb_ver=ptb_version),
+                     'icon': 'terminator.png'}
     }
     for t in types:
         info = types[t]
         with open(info['name'], 'w') as f:
             f.write(desktop_entry.format(ptb_ver=ptb_version,
                                          otype=t,
-                                         cmd=info['cmd']))
+                                         cmd=info['cmd'],
+                                         icon=info['icon']))
         
-    shutil.copyfile(desktop_name, file_name)
-    shutil.copyfile(terminal_name, file_name)
+    os.symlink(gui_share_name, gui_name)
+    os.symlink(terminal_share_name, terminal_name)
     st = os.stat(desktop_name)
     os.chmod(desktop_name, st.st_mode | stat.S_IEXEC)
     os.chmod(terminal_name, st.st_mode | stat.S_IEXEC)
@@ -119,9 +125,9 @@ if __name__ == '__main__':
     out = run(['git', 'config', '--system', '--add', 'safe.directory', base_path])
     # replace the Datapixx files with the one from vpixx
     shutil.copy(r'/usr/local/share/VPixx Software Tools/Software Tools/Matlab/mexfiles/linux/octave/Datapixx_octave5.mex',
-                os.path.join(base_path, 'Psychtoolbox', 'PsychBasic', 'Octave5LinuxFiles64', 'Eyelink.mex'))
+                os.path.join(base_path, 'Psychtoolbox', 'PsychBasic', 'Octave5LinuxFiles64', 'Datapixx.mex'))
     shutil.copy(r'/usr/local/share/VPixx Software Tools/Software Tools/Matlab/mexfiles/linux/matlab/Datapixx.mexa64',
-                os.path.join(base_path, 'Psychtoolbox', 'PsychBasic', 'Eyelink.mexa64'))
+                os.path.join(base_path, 'Psychtoolbox', 'PsychBasic', 'Datapixx.mexa64'))
     
     # make a desktop shortcut?
     if args.shortcut:

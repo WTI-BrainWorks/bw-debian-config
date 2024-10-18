@@ -100,9 +100,6 @@ colortail
 #Alt: logswan
 #tailspin # sid only
 
-#Section: Configuration management
-ansible
-
 #Section: Display manager/screen locker
 #Description: lightdm
 lightdm

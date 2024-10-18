@@ -1,7 +1,6 @@
-let blank = "about:blank";
-pref("browser.startup.homepage", blank);
-pref("startup.homepage_welcome_url", blank);
-pref("startup.homepage_welcome_url.additional", blank);
+pref("browser.startup.homepage", "about:blank");
+pref("startup.homepage_welcome_url", "about:blank");
+pref("startup.homepage_welcome_url.additional", "about:blank");
 // disable first welcome
 pref("browser.aboutwelcome.enabled", false);
 pref("trailhead.firstrun.branches", "nofirstrun-empty");

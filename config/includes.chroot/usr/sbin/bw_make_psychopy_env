@@ -58,6 +58,7 @@ def write_desktop_file(psychopy_version, env_path):
             f.write(desktop_entry.format(psychopy_v=psychopy_version,
                                          env_path=env_path,
                                          type=type,
+                                         icon=info['icon'],
                                          cmd=info['cmd'].format(
                                              psychopy_v=psychopy_version,
                                              env_path=env_path
@@ -66,9 +67,9 @@ def write_desktop_file(psychopy_version, env_path):
     os.symlink(gui_share_name, gui_name)
     os.symlink(terminal_share_name, terminal_name)
     # # set the permissions
-    st = os.stat(desktop_name)
-    os.chmod(desktop_name, st.st_mode | stat.S_IEXEC)
-    os.chmod(terminal_name, st.st_mode | stat.S_IEXEC)
+    st = os.stat(gui_share_name)
+    os.chmod(gui_share_name, st.st_mode | stat.S_IEXEC)
+    os.chmod(terminal_share_name, st.st_mode | stat.S_IEXEC)
     
 
 if __name__ == '__main__':
@@ -145,4 +146,4 @@ if __name__ == '__main__':
     
     # make a desktop shortcut?
     if args.shortcut:
-        write_desktop_file(args.py_ver, name, env_dir)
+        write_desktop_file(name, env_dir)

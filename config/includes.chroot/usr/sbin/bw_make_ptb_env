@@ -44,7 +44,7 @@ def write_desktop_file(ptb_version):
 
     types = {
         'GUI': {'name': gui_share_name, 
-                'cmd': app_cmd.format(ptb_ver=ptb_version)
+                'cmd': app_cmd.format(ptb_ver=ptb_version),
                 'icon': 'ptb.jpg'},
         'terminal': {'name': terminal_share_name, 
                      'cmd': terminal_cmd.format(ptb_ver=ptb_version),
@@ -60,9 +60,9 @@ def write_desktop_file(ptb_version):
         
     os.symlink(gui_share_name, gui_name)
     os.symlink(terminal_share_name, terminal_name)
-    st = os.stat(desktop_name)
-    os.chmod(desktop_name, st.st_mode | stat.S_IEXEC)
-    os.chmod(terminal_name, st.st_mode | stat.S_IEXEC)
+    st = os.stat(gui_share_name)
+    os.chmod(gui_share_name, st.st_mode | stat.S_IEXEC)
+    os.chmod(terminal_share_name, st.st_mode | stat.S_IEXEC)
     #f=FILE; gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')"
     
 

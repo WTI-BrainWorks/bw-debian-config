@@ -72,7 +72,6 @@
       <property name="HomePage" type="string" value="exo-open --launch WebBrowser"/>
       <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
       <property name="&lt;Super&gt;F1" type="string" value="xfce4-find-cursor"/>
-      <property name="&lt;Alt&gt;Pause" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
@@ -82,6 +81,7 @@
       <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="/usr/bin/terminator"/>
+      <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

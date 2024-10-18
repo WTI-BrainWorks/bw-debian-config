@@ -9,6 +9,7 @@ octave-optim
 octave-statistics
 octave-signal
 octave-io
+libqt5sql5-sqlite
 libfontconfig1-dev
 libopenhmd-dev
 libusb-1.0-0-dev

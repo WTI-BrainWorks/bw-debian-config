@@ -2,7 +2,7 @@
 echo "I: running $0"
 
 disabled_services="avahi-daemon.service openvpn.service rsync.service nmbd.service smbd.service libvirtd.service libvirt-guests.service"
-enabled_services="bw_radeon.service bw_bg.service"
+enabled_services="bw_radeon.service bw_bg.service bw_xorg.service"
 
 for service in $disabled_services; do
 	echo "Disabling $service"

@@ -56,7 +56,7 @@
         <property name="workspace1" type="empty">
           <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-shapes.svg"/>
+          <property name="last-image" type="string" value="/usr/share/backgrounds/hdmi1.png"/>
         </property>
         <property name="workspace2" type="empty">
           <property name="color-style" type="int" value="0"/>
@@ -78,7 +78,7 @@
     <property name="show-delete" type="bool" value="false"/>
   </property>
   <property name="last" type="empty">
-    <property name="window-width" type="int" value="628"/>
+    <property name="window-width" type="int" value="634"/>
     <property name="window-height" type="int" value="567"/>
   </property>
   <property name="windowlist-menu" type="empty">

@@ -2,6 +2,11 @@
     "policies": {
         "BlockAboutConfig": true,
         "DisableFirefoxAccounts": true,
+        "OverrideFirstRunPage": "",
+        "OverridePostUpdatePage": "",
+        "OfferToSaveLogins": false,
+        "OfferToSaveLoginsDefault": false,
+        "PasswordManagerEnabled": false,
         "ExtensionSettings": {
             "*": {
                 "blocked_install_message": "Sorry, you can't install extensions. This action will be reported to the nearest Administrator.",

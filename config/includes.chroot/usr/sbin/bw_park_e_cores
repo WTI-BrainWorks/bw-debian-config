@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# park E cores
+# could do with tuned, but we would need to be aware
+# of the specific CPU ahead of time?
+
+function cleanup {
+    logger "[BW] phew, unparking E cores...";
+
+    # unpark cores & switch to powersave governor
+    BASE_CPU_PATH="/sys/devices/system/cpu/"
+    N_CORES=$(nproc --all)
+
+    for ((i = 0; i <= (N_CORES-1); i++)); do
+        online_path="$BASE_CPU_PATH/cpu$i/online"
+        if [ -f $online_path ]; then
+            echo "1" > $online_path
+        fi
+    done
+
+}
+
+trap cleanup EXIT
+
+logger "[BW] Parking E cores...";
+
+# park cores by setting /sys/devices/system/cpu/cpu<#>/online to '0'
+# Assume cpu0 is always a P core (and can't generally be disabled anyway)
+BASE_CPU_PATH="/sys/devices/system/cpu/"
+N_CORES=$(nproc --all)
+P_FREQ=0
+for ((i = 0; i <= (N_CORES-1); i++)); do
+    # if we don't have the cpufreq dir, then nothing we can do
+    # might be a VM or WSL?
+    cpu_path="$BASE_CPU_PATH/cpu$i"
+    clk_path="$cpu_path/cpufreq/cpuinfo_max_freq"
+    gov_path="$cpu_path/cpufreq/scaling_governor"
+    online_path="$cpu_path/online"
+    if [ -f $gov_path ]; then
+        # the first CPU core should be a P core,
+        # so we'll use its max freq to determine
+        # whether subsequent cores are P or E.
+
+        if [ $i == 0 ]; then
+            if [ -f $clk_path ]; then
+                P_FREQ=$(tr -cd 0-9 < $clk_path)
+            fi
+
+        # park the core?
+        elif [ -f $online_path ]; then # not the first core
+            # if P_FREQ is 0, assume we can't actually tell
+            # whether something's a P or E core
+            # (also e.g. in WSL, no /cpufreq/ is available)
+            # skip if online is unavailable
+            this_freq=$(tr -cd 0-9 < $clk_path)
+            if (( this_freq > P_FREQ )); then
+                logger "[BW] Max frequency $this_freq on CPU$i was higher than $P_FREQ on CPU0! Weird..."
+                continue
+            fi
+            # the threshold is sort of arbitrary. On my test machine,
+            # the E cores are ~75% of the max P freq
+            # on an internet post, there are some P cores that are a hair
+            # slower than the fastest, and the E cores are like 50%
+            if (( P_FREQ > 0 && $(echo "($P_FREQ*0.8)/1" | bc) > this_freq )); then
+                # this is probably an E core, so let's try to park it?
+                # thanks to https://github.com/FeralInteractive/gamemode/blob/c54d6d4243b0dd0afcb49f2c9836d432da171a2b/util/cpucorectl.c#L85
+                echo "0" > $online_path
+                logger "[BW] Parked CPU$i"
+            fi
+        fi
+
+    fi # end cpu setting
+done
+
+# wait until done. When exiting, cleanup should be called?
+sleep infinity

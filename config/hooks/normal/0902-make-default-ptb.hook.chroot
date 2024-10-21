@@ -1,3 +1,3 @@
 #!/bin/bash
 
-bw_make_ptb_env --tag 3.0.19.14 --shortcut 1
+BRAINWORKS=1 bw_make_ptb_env --tag 3.0.19.14 --shortcut 1

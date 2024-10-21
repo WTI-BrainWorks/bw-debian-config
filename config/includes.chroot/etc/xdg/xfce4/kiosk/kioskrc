@@ -6,6 +6,7 @@ CustomizeSplash=%sudo
 CustomizeChooser=%sudo
 CustomizeLogout=%sudo
 CustomizeCompatibility=%sudo
+SaveSession=NONE 
 Shutdown=%sudo
 CustomizeSecurity=%sudo
 

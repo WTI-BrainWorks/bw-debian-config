@@ -1,0 +1,2 @@
+#!/bin/bash
+#sed -i "/^deb cdrom:/s/^/#/" /etc/apt/sources.list

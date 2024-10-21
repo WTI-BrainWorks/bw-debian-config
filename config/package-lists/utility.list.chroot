@@ -110,14 +110,12 @@ dconf-gsettings-backend
 #Description: xfce4-power-manager
 xfce4-power-manager
 radeontool
-bumblebee
 vbetool
 powertop
 usbutils
 acpi
 acpi-support
 acpi-support-base
-laptop-mode-tools
 fancontrol
 rfkill
 cpufrequtils

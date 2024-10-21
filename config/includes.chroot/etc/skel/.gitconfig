@@ -15,8 +15,6 @@
 	sl = shortlog
 	gc = gc --aggressive
 	thanks = shortlog -sne
-[credential]
-	helper = store
 [pull]
 	rebase = true
 

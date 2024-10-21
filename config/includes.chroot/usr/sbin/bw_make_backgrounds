@@ -7,8 +7,8 @@ default_bg=$bg_path/default_bg.png
 
 convert -gravity SouthWest -pointsize 48 -fill white -draw \
     "text 100,100 '$(hostname)_HDMI-1'" \
-    -font $font $default_bg $bg_path/hdmi1.png
+    -font $font $default_bg $bg_path/hdmi1.png &
 
 convert -gravity SouthWest -pointsize 48 -fill white -draw \
     "text 100,100 '$(hostname)_HDMI-2'" \
-    -font $font $default_bg $bg_path/hdmi2.png
+    -font $font $default_bg $bg_path/hdmi2.png &

@@ -25,6 +25,7 @@ apt-listchanges
 apt-transport-https
 debian-archive-keyring
 debian-keyring
+unattended-upgrades
 command-not-found
 #Alt: gnome-package-updater
 #Alt: debfoster

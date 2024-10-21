@@ -62,9 +62,8 @@ def write_desktop_file(ptb_version):
     os.symlink(terminal_share_name, terminal_name)
     st = os.stat(gui_share_name)
     os.chmod(gui_share_name, st.st_mode | stat.S_IEXEC)
-    os.chmod(terminal_share_name, st.st_mode | stat.S_IEXEC)
-    #f=FILE; gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')"
-    
+    os.chmod(terminal_share_name, st.st_mode | stat.S_IEXEC)    
+
 
 if __name__ == '__main__':
     if platform.system() != 'Linux' or not os.environ.get('BRAINWORKS'):

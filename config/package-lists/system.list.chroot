@@ -17,6 +17,7 @@ displaycal
 libglfw3-dev
 sysprof
 gnome-themes-extra
+xscreensaver
 
 #Section: Package management
 #Description: gnome-packagekit

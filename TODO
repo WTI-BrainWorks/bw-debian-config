@@ -11,9 +11,9 @@
 - [x] Set env variables
 - [x] Move PTB config files to right locations
 - [x] Symlink libglut in the live image
-- [ ] Install default PTB and PsychoPy
+- [x] Install default PTB and PsychoPy
 - [x] Install a py3.10 somehow (use ~conda~ (libstdc++ differences, etc. make it a bad experience)? use ~pyenv~? build from source?)
-- [ ] Generate a xorg.conf on the fly
-- [ ] Fix the xfce config for backgrounds on the fly (when displays remap)
+- [x] Generate a xorg.conf on the fly
+- [x] Fix the xfce config for backgrounds on the fly (when displays remap)
 - [ ] Set the working audio automatically
 - [x] Disable pulseaudio sleeping

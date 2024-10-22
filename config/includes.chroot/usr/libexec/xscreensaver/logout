@@ -1,3 +1,5 @@
 #!/bin/sh
 
 xfce4-session-logout --logout --fast
+
+sleep 2 # wait so that the exit code doesn't flash on the screen

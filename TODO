@@ -1,6 +1,6 @@
-- [ ] Make sure all expected packages are installed (should be set, but...)
+- [~] Make sure all expected packages are installed (should be set, but...)
 - [x] Make sure correct kernel is running
-- [ ] Make autologout functionality work (maybe xautolock?)
+- [x] Make autologout functionality work (maybe xautolock?) (using xscreensaver, to check)
 - [x] install kiosk mode config
 - [x] install lightdm greeter settings
 - [x] install skeletons for xfce4 & Thunar

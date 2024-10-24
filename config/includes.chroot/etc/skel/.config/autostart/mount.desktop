@@ -4,6 +4,6 @@ Name=bw_mount
 Comment=Mount /media/bw-share at login
 Exec=/usr/bin/bw_mount
 RunHook=0
-Terminal=false
+Terminal=true
 Hidden=false
 StartupNotify=false

@@ -3,4 +3,4 @@ Type=Application
 Name=bw_bgset
 Comment=Set background for secondary display
 Exec=bash -c 'DISPLAY=:0.1 feh --bg-scale /usr/share/backgrounds/hdmi2.png'
-Terminal=true
+Terminal=false

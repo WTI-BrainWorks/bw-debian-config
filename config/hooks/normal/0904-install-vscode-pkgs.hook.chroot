@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pkgs="mathworks.language-matlab ms-python.debugpy ms-vscode.cpptools-extension-pack"
+
+for p in $pkgs; do
+    code --no-sandbox --user-data-dir=/tmp --install-extension $p
+done
+
+mv /root/.vscode/extensions/* /usr/share/code/resources/app/extensions/

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bw_mount
+Comment=Mount /media/bw-share at login
+Exec=/usr/bin/bw_mount
+RunHook=0
+Terminal=false
+Hidden=false
+StartupNotify=false

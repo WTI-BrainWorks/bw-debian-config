@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read -p "What's your Yale NetID? " netid
+
+USER=$netid mount /media/bw-share

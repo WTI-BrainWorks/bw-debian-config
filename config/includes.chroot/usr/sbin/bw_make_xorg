@@ -22,11 +22,13 @@ EndSection
 Section "Monitor"
   Identifier    "{disp1}"
   Option "DPMS" "off"
+  #VertRefresh 55-65
 EndSection
 
 Section "Monitor"
   Identifier    "{disp2}"
   Option "DPMS" "off"
+  #VertRefresh 55-150
 EndSection
 
 Section "Device"

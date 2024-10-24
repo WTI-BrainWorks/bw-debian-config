@@ -18,6 +18,9 @@ libglfw3-dev
 sysprof
 gnome-themes-extra
 xscreensaver
+nfs-common
+cifs-utils
+python3-tk
 
 #Section: Package management
 #Description: gnome-packagekit

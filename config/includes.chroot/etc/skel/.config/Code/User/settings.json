@@ -1,0 +1,12 @@
+{
+    "editor.minimap.enabled": false,
+    "terminal.integrated.commandsToSkipShell": [
+        "matlab.interrupt"
+    ],
+    "files.associations": {
+        "*.m": "matlab"
+    },
+    "git.terminalAuthentication": false,
+    "github.gitAuthentication": false,
+    "workbench.startupEditor": "none"
+}

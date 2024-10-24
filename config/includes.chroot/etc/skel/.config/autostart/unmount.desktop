@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bw_unmount
+Comment=Unmount /media/bw-share at logout
+Exec=umount /media/bw-share
+RunHook=1
+Terminal=false
+Hidden=false
+StartupNotify=false

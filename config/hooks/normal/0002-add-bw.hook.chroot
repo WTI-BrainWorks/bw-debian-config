@@ -1,10 +1,10 @@
 #!/bin/bash
-useradd -G adm,cdrom,dip,plugdev,sudo,psychtoolbox,dialout,lp,video,gamemode \
+useradd -G adm,cdrom,dip,plugdev,sudo,psychtoolbox,dialout,lp,video,gamemode,colord \
     -p '$6$JJVhyKekQipJ8pB0$qelMQzpEJMDWI7Xn2.t9nxbjisH1S.k5gmzs5nXGt/cfufTacud6kIsGgnpLCZS8NTX4JTz3zWDSfbiSJasR/.' \
     -s /bin/bash \
     -m bwadmin
 
-useradd -G psychtoolbox,dialout,lp,video,gamemode \
+useradd -G psychtoolbox,dialout,lp,video,gamemode,colord \
     -p '$6$wQZo5UZ/81bGpN5y$8k9w3QHZWxqnIhFSXu3anzyYrDsRY/B./D2YQcKZD1ituFUriDzOMLOqs1L9dXswUaWKUX/By6.aQDqjjJQsj0' \
     -s /bin/bash \
     -m bw

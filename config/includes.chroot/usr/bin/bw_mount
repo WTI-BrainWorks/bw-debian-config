@@ -1,5 +1,7 @@
 #!/bin/bash
 
+umount /media/bw-share 2> /dev/null
+
 read -p "What's your Yale NetID? " netid
 
 USER=$netid mount /media/bw-share

@@ -2,5 +2,6 @@
 
 groupadd psychtoolbox
 groupadd gamemode
+groupadd colord
 #usermod -aG psychtoolbox bwadmin
 #usermod -aG gamemode bwadmin

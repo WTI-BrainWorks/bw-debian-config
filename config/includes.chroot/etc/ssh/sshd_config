@@ -124,7 +124,7 @@ X11Forwarding no
 X11UseLocalhost yes
 
 # Only allow login for users from ssh/sftponly groups
-AllowGroups ssh sftponly
+AllowGroups bwadmin
 
 # Misc. configuration
 # ===================

@@ -204,7 +204,7 @@ if __name__ == '__main__':
         crtc_map[dct['crtc']] = dct['xname']
 
     # write the xorg config
-    if len(crt_map) == 1:
+    if len(crtc_map) == 1:
         with open(xorg_name, 'w') as f:
             f.write(xorg_conf_single_template.format(disp1=crtc_map[0]))
     else:

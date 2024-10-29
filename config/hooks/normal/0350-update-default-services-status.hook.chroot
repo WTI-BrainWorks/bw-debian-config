@@ -2,7 +2,8 @@
 echo "I: running $0"
 
 disabled_services="avahi-daemon.service openvpn.service rsync.service nmbd.service smbd.service libvirtd.service libvirt-guests.service"
-enabled_services="bw_radeon.service bw_bg.service bw_xorg.service"
+enabled_services="bw_radeon.service bw_bg.service bw_xorg.service bw_mount_res.service bw_ssh.service bw_park_e_cores.service"
+#user_services="networkd-wait-online.service bw_user_mount.service x-started.service"
 
 for service in $disabled_services; do
 	echo "Disabling $service"
@@ -15,3 +16,9 @@ for service in $enabled_services; do
 	systemctl enable "$service" || true
 	systemctl start "$service" || true
 done
+
+# for service in $user_services; do
+#     echo "Enabling $service for user"
+# 	systemctl --global enable "$service" || true
+# 	systemctl --global start "$service" || true
+# done

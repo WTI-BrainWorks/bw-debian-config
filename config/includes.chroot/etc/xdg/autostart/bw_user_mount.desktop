@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Mount BrainWorks share
+Name=bw_mount_share
 Comment=Mount /media/bw-share at login
-Exec=/usr/bin/bw_mount
+Exec=bash -c "/usr/bin/nm-online -s -q && /usr/bin/bw_mount"
 RunHook=0
 Terminal=true
 Hidden=false

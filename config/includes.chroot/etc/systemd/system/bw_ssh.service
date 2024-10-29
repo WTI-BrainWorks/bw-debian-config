@@ -1,0 +1,8 @@
+[Unit]
+Description=Enable ssh
+[Service]
+Type=simple
+TimeoutStartSec=0
+ExecStart=ufw allow ssh
+[Install]
+WantedBy=default.target

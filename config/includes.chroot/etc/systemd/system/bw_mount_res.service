@@ -1,0 +1,10 @@
+[Unit]
+Description=Mount bw-resources folder when network available
+Wants=network-online.target
+After=network.target network-online.target
+[Service]
+Type=simple
+TimeoutStartSec=0
+ExecStart=mount /media/bw-resources
+[Install]
+WantedBy=default.target

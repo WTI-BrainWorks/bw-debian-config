@@ -82,7 +82,7 @@ if __name__ == '__main__':
     # just use tag/hash and always install from github instead of pypi
     # then it's easier to specify forked location/etc instead of totally different code path
     parser = argparse.ArgumentParser(description='Set up a new PsychoPy env (+ BrainWorks hardware add-ons).')
-    parser.add_argument('--tag', type=str, default='2024.2.3',
+    parser.add_argument('--tag', type=str, default='2024.2.4',
                         required=True,
                         help='PsychoPy tagged version or hash')
     parser.add_argument('--remote', type=str, default='psychopy',
